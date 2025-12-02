@@ -1,6 +1,5 @@
 ---
-# We'll use defaults from the LLVM style, but with 4 columns indentation.
-BasedOnStyle: Microsoft
-IndentWidth: 4
-UseTabStyle: Never
-
+BinPackArguments: false
+BinPackParameters: false
+UseTab: Never
+TabWidth: 2
