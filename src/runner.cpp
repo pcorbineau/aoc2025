@@ -1,5 +1,4 @@
-#include <aoc2025lib/day01.hpp>
-#include <aoc2025lib/day02.hpp>
+#include <aoc2025lib/days.hpp>
 #include <filesystem>
 #include <fstream>
 #include <string>
@@ -15,11 +14,13 @@ std::string read_file(const std::filesystem::path &filename) {
 constexpr std::array part01 = {
     aoc2025::day01::part01,
     aoc2025::day02::part01,
+    aoc2025::day03::part01,
 };
 
 constexpr std::array part02 = {
     aoc2025::day01::part02,
     aoc2025::day02::part02,
+    aoc2025::day03::part02,
 };
 void print_result(const int day_number, std::string_view input) {
   std::println("day {:02}", day_number);

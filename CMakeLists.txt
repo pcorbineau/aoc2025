@@ -28,8 +28,10 @@ add_library(aoc2025lib INTERFACE)
 target_sources(
 	aoc2025lib
 	INTERFACE
+	${CMAKE_SOURCE_DIR}/include/aoc2025lib/days.hpp
 	${CMAKE_SOURCE_DIR}/include/aoc2025lib/day01.hpp
 	${CMAKE_SOURCE_DIR}/include/aoc2025lib/day02.hpp
+	${CMAKE_SOURCE_DIR}/include/aoc2025lib/day03.hpp
 )
 target_include_directories(
 	aoc2025lib
@@ -51,7 +53,9 @@ add_executable(
 	aoc2025test
 	tests/day01.cpp
 	tests/day02.cpp
+	tests/day03.cpp
 )
+target_compile_definitions(aoc2025test PRIVATE CATCH_CONFIG_RUNTIME_STATIC_REQUIRE)
 target_link_libraries(aoc2025test PRIVATE aoc2025lib Catch2::Catch2WithMain)
 # -----------------------------------------------------------------------------
 # custom target run to run test
