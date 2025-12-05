@@ -15,12 +15,14 @@ constexpr std::array part01 = {
     aoc2025::day01::part01,
     aoc2025::day02::part01,
     aoc2025::day03::part01,
+    aoc2025::day04::part01,
 };
 
 constexpr std::array part02 = {
     aoc2025::day01::part02,
     aoc2025::day02::part02,
     aoc2025::day03::part02,
+    aoc2025::day04::part02,
 };
 void print_result(const int day_number, std::string_view input) {
   std::println("day {:02}", day_number);

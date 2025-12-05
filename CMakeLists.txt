@@ -32,6 +32,7 @@ target_sources(
 	${CMAKE_SOURCE_DIR}/include/aoc2025lib/day01.hpp
 	${CMAKE_SOURCE_DIR}/include/aoc2025lib/day02.hpp
 	${CMAKE_SOURCE_DIR}/include/aoc2025lib/day03.hpp
+	${CMAKE_SOURCE_DIR}/include/aoc2025lib/day04.hpp
 )
 target_include_directories(
 	aoc2025lib
@@ -54,6 +55,7 @@ add_executable(
 	tests/day01.cpp
 	tests/day02.cpp
 	tests/day03.cpp
+	tests/day04.cpp
 )
 target_compile_definitions(aoc2025test PRIVATE CATCH_CONFIG_RUNTIME_STATIC_REQUIRE)
 target_link_libraries(aoc2025test PRIVATE aoc2025lib Catch2::Catch2WithMain)
