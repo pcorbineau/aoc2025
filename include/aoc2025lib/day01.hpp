@@ -64,7 +64,7 @@ constexpr ComputeResult rotate(const Rotation &rot, int last) {
   return {.value = result, .passes0 = passes0};
 }
 
-constexpr auto part01(std::string_view input) {
+constexpr auto part01(std::string_view input) -> long {
   using namespace std::literals;
 
   auto dial_transform = [last = 50](auto compute) mutable {
@@ -83,7 +83,7 @@ constexpr auto part01(std::string_view input) {
           dial_transform(compute),
       0);
 }
-constexpr auto part02(std::string_view input) {
+constexpr auto part02(std::string_view input) -> long {
   using namespace std::literals;
 
   auto dial_transform = [last = 50](auto compute) {
