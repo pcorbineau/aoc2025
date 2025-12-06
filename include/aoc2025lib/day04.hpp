@@ -11,7 +11,7 @@ constexpr auto index(const auto width, const auto x, const auto y) {
   return (y * (width + 1)) + x;
 }
 constexpr auto
-in_bounds(const auto width, const auto height, const auto x, const auto y) {
+in_bounds(const int width, const int height, const int x, const int y) {
   return x >= 0 and x < width and y >= 0 and y < height;
 }
 constexpr auto is_roll_of_paper(const auto cell) { return cell == '@'; }

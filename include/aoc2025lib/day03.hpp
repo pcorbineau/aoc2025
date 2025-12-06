@@ -31,7 +31,7 @@ constexpr auto largest_joltage(const std::size_t window, std::string_view input)
     std::size_t value = 0;
     const auto end = input.size() - window + 1 + i;
     for (std::size_t j = start; j < end; j++) {
-      const auto c = as_num(input[j]);
+      const auto c = static_cast<std::size_t>(as_num(input[j]));
       if (c > value) {
         value = c;
         start = j + 1;
