@@ -23,7 +23,8 @@ constexpr auto neighbours(
   std::size_t counter = 0;
   for (int i = x - 1; i <= x + 1; i++) {
     for (int j = y - 1; j <= y + 1; j++) {
-      if (in_bounds(width, height, i, j) and not himself(x, y, i, j) and
+      if (in_bounds(static_cast<int>(width), static_cast<int>(height), i, j) and
+          not himself(x, y, i, j) and
           is_roll_of_paper(input[index(width, i, j)]))
         counter++;
     }
