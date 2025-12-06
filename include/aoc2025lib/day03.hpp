@@ -12,12 +12,13 @@ struct lines_t : std::ranges::range_adaptor_closure<lines_t> {
   // operator() for pipe syntax:
   template <std::ranges::viewable_range R> auto operator()(R &&r) const {
     // split on '\n', then transform subranges into string_view
-    return std::forward<R>(r) | std::views::split('\n') |
-           std::views::transform([](auto &&subrange) {
-             // subrange is a range of characters
-             return std::string_view{std::ranges::data(subrange),
-                                     std::ranges::size(subrange)};
-           });
+    return std::forward<R>(r)
+           | std::views::split('\n')
+           | std::views::transform([](auto &&subrange) {
+               // subrange is a range of characters
+               return std::string_view{std::ranges::data(subrange),
+                                       std::ranges::size(subrange)};
+             });
   }
 };
 
@@ -45,8 +46,10 @@ constexpr auto empty_line = [](auto &&rng) { return rng.size() != 0; };
 
 constexpr auto part01(std::string_view input) -> std::size_t {
   return std::ranges::fold_left(
-      input | lines | std::views::filter(empty_line) |
-          std::views::transform(
+      input
+          | lines
+          | std::views::filter(empty_line)
+          | std::views::transform(
               [](std::string_view line) { return largest_joltage(2, line); }),
       0,
       std::plus{});
@@ -54,8 +57,10 @@ constexpr auto part01(std::string_view input) -> std::size_t {
 
 constexpr auto part02(std::string_view input) -> std::size_t {
   return std::ranges::fold_left(
-      input | lines | std::views::filter(empty_line) |
-          std::views::transform(
+      input
+          | lines
+          | std::views::filter(empty_line)
+          | std::views::transform(
               [](std::string_view line) { return largest_joltage(12, line); }),
       0,
       std::plus{});

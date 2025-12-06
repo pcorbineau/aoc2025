@@ -31,36 +31,36 @@ TEST_CASE("parts", "[day01]") {
 }
 
 TEST_CASE("rotate", "[day01]") {
-  STATIC_CHECK(rotate({Rotation::Direction::Left, 68}, 50) ==
-               ComputeResult{82, 1});
-  STATIC_CHECK(rotate({Rotation::Direction::Left, 30}, 82) ==
-               ComputeResult{52, 0});
-  STATIC_CHECK(rotate({Rotation::Direction::Right, 48}, 52) ==
-               ComputeResult{0, 1});
-  STATIC_CHECK(rotate({Rotation::Direction::Left, 5}, 0) ==
-               ComputeResult{95, 0});
-  STATIC_CHECK(rotate({Rotation::Direction::Right, 60}, 95) ==
-               ComputeResult{55, 1});
-  STATIC_CHECK(rotate({Rotation::Direction::Left, 55}, 55) ==
-               ComputeResult{0, 1});
-  STATIC_CHECK(rotate({Rotation::Direction::Left, 1}, 0) ==
-               ComputeResult{99, 0});
-  STATIC_CHECK(rotate({Rotation::Direction::Left, 99}, 99) ==
-               ComputeResult{0, 1});
-  STATIC_CHECK(rotate({Rotation::Direction::Right, 14}, 0) ==
-               ComputeResult{14, 0});
-  STATIC_CHECK(rotate({Rotation::Direction::Left, 82}, 14) ==
-               ComputeResult{32, 1});
+  STATIC_CHECK(rotate({Rotation::Direction::Left, 68}, 50)
+               == ComputeResult{82, 1});
+  STATIC_CHECK(rotate({Rotation::Direction::Left, 30}, 82)
+               == ComputeResult{52, 0});
+  STATIC_CHECK(rotate({Rotation::Direction::Right, 48}, 52)
+               == ComputeResult{0, 1});
+  STATIC_CHECK(rotate({Rotation::Direction::Left, 5}, 0)
+               == ComputeResult{95, 0});
+  STATIC_CHECK(rotate({Rotation::Direction::Right, 60}, 95)
+               == ComputeResult{55, 1});
+  STATIC_CHECK(rotate({Rotation::Direction::Left, 55}, 55)
+               == ComputeResult{0, 1});
+  STATIC_CHECK(rotate({Rotation::Direction::Left, 1}, 0)
+               == ComputeResult{99, 0});
+  STATIC_CHECK(rotate({Rotation::Direction::Left, 99}, 99)
+               == ComputeResult{0, 1});
+  STATIC_CHECK(rotate({Rotation::Direction::Right, 14}, 0)
+               == ComputeResult{14, 0});
+  STATIC_CHECK(rotate({Rotation::Direction::Left, 82}, 14)
+               == ComputeResult{32, 1});
 
   // Special cases
-  STATIC_CHECK(rotate({Rotation::Direction::Right, 1000}, 50) ==
-               ComputeResult{50, 10});
-  STATIC_CHECK(rotate({Rotation::Direction::Left, 50}, 50) ==
-               ComputeResult{0, 1});
-  STATIC_CHECK(rotate({Rotation::Direction::Right, 101}, 0) ==
-               ComputeResult{1, 1});
-  STATIC_CHECK(rotate({Rotation::Direction::Right, 400}, 0) ==
-               ComputeResult{0, 4});
+  STATIC_CHECK(rotate({Rotation::Direction::Right, 1000}, 50)
+               == ComputeResult{50, 10});
+  STATIC_CHECK(rotate({Rotation::Direction::Left, 50}, 50)
+               == ComputeResult{0, 1});
+  STATIC_CHECK(rotate({Rotation::Direction::Right, 101}, 0)
+               == ComputeResult{1, 1});
+  STATIC_CHECK(rotate({Rotation::Direction::Right, 400}, 0)
+               == ComputeResult{0, 4});
 }
 
 TEST_CASE("special cases", "[day01]") {

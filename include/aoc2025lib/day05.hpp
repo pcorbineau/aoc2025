@@ -35,8 +35,8 @@ template <typename T> constexpr auto as_num(std::string_view input) {
   if (input.empty())
     throw std::runtime_error("empty input");
   T result{};
-  auto [ptr, ec] =
-      std::from_chars(input.data(), input.data() + input.size(), result);
+  auto [ptr, ec]
+      = std::from_chars(input.data(), input.data() + input.size(), result);
   if (ec != std::errc{}) {
     throw std::runtime_error("invalid string to num");
   }
@@ -68,17 +68,18 @@ constexpr auto part01(std::string_view input) -> std::size_t {
   using namespace std::literals;
   auto view = input | std::views::split("\n\n"sv);
   auto ranges_it = std::ranges::begin(view);
-  auto ranges = as_string_view(*ranges_it) | std::views::split("\n"sv) |
-                std::views::transform(to_string_view) |
-                std::views::transform(parse_range) |
-                std::ranges::to<std::vector>();
-  auto values = as_string_view(*std::ranges::next(ranges_it)) |
-                std::views::split('\n') |
-                std::views::transform(to_string_view) |
-                std::views::filter([](auto str) { return not str.empty(); }) |
-                std::views::transform([](std::string_view str) {
-                  return as_num<std::size_t>(str);
-                });
+  auto ranges = as_string_view(*ranges_it)
+                | std::views::split("\n"sv)
+                | std::views::transform(to_string_view)
+                | std::views::transform(parse_range)
+                | std::ranges::to<std::vector>();
+  auto values = as_string_view(*std::ranges::next(ranges_it))
+                | std::views::split('\n')
+                | std::views::transform(to_string_view)
+                | std::views::filter([](auto str) { return not str.empty(); })
+                | std::views::transform([](std::string_view str) {
+                    return as_num<std::size_t>(str);
+                  });
 
   return std::ranges::distance(
       values | std::views::filter([ranges](const std::size_t val) {
@@ -91,10 +92,11 @@ constexpr auto part02(std::string_view input) -> std::size_t {
   using namespace std::literals;
   auto view = input | std::views::split("\n\n"sv);
   auto ranges_it = std::ranges::begin(view);
-  auto vec = as_string_view(*ranges_it) | std::views::split("\n"sv) |
-             std::views::transform(to_string_view) |
-             std::views::transform(parse_range) |
-             std::ranges::to<std::vector>();
+  auto vec = as_string_view(*ranges_it)
+             | std::views::split("\n"sv)
+             | std::views::transform(to_string_view)
+             | std::views::transform(parse_range)
+             | std::ranges::to<std::vector>();
   std::ranges::sort(vec, {}, &Range::begin);
   std::vector<Range> output{vec[0]};
   output.reserve(vec.size());

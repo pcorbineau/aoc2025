@@ -18,15 +18,15 @@ TEST_CASE("parts", "[day06]") {
 }
 
 TEST_CASE("parse_number_line", "[day06]") {
-  STATIC_CHECK(parse_number_line("123 328  51 64") ==
-               std::vector<std::size_t>{123, 328, 51, 64});
-  STATIC_CHECK(parse_number_line(" 45 64  387 23 ") ==
-               std::vector<std::size_t>{45, 64, 387, 23});
+  STATIC_CHECK(parse_number_line("123 328  51 64")
+               == std::vector<std::size_t>{123, 328, 51, 64});
+  STATIC_CHECK(parse_number_line(" 45 64  387 23 ")
+               == std::vector<std::size_t>{45, 64, 387, 23});
 }
 
 TEST_CASE("parse_operator_line", "[day06]") {
   STATIC_CHECK(
-      parse_operator_line("*   +   *   +") ==
-      std::vector<Operator>{
+      parse_operator_line("*   +   *   +")
+      == std::vector<Operator>{
           Operator::Mul, Operator::Plus, Operator::Mul, Operator::Plus});
 }

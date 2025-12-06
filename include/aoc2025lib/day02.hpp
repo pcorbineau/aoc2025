@@ -41,8 +41,8 @@ constexpr auto is_invalid_id_half(std::string_view id) {
     return false;
 
   const auto half_index = id.size() / 2;
-  return id.substr(0, half_index) ==
-         id.substr(half_index, std::string_view::npos);
+  return id.substr(0, half_index)
+         == id.substr(half_index, std::string_view::npos);
 }
 constexpr auto is_invalid_id(std::string_view id) {
   if (id.size() < 2)
@@ -58,47 +58,51 @@ constexpr auto is_invalid_id(std::string_view id) {
 }
 
 constexpr auto part01(std::string_view input) -> std::size_t {
-  auto data =
-      input | std::views::split(',') | std::views::transform([](auto &&rng) {
-        auto data = rng | std::views::split('-') |
-                    std::views::transform(as_string_view) |
-                    std::views::transform(to_int);
-        return data;
-      });
+  auto data
+      = input | std::views::split(',') | std::views::transform([](auto &&rng) {
+          auto data = rng
+                      | std::views::split('-')
+                      | std::views::transform(as_string_view)
+                      | std::views::transform(to_int);
+          return data;
+        });
 
-  auto new_rng = data | std::views::transform([](auto &&rng) {
-                   auto begin_it = std::ranges::begin(rng);
-                   auto begin = *begin_it;
-                   auto end = *std::ranges::next(begin_it);
-                   return std::views::iota(begin, end + 1) |
-                          std::views::filter([](const auto &num) {
-                            auto str = to_string(num);
-                            return is_invalid_id_half(str);
-                          });
-                 }) |
-                 std::views::join;
+  auto new_rng = data
+                 | std::views::transform([](auto &&rng) {
+                     auto begin_it = std::ranges::begin(rng);
+                     auto begin = *begin_it;
+                     auto end = *std::ranges::next(begin_it);
+                     return std::views::iota(begin, end + 1)
+                            | std::views::filter([](const auto &num) {
+                                auto str = to_string(num);
+                                return is_invalid_id_half(str);
+                              });
+                   })
+                 | std::views::join;
   return std::ranges::fold_left(new_rng, 0, std::plus{});
 }
 constexpr auto part02(std::string_view input) -> std::size_t {
-  auto data =
-      input | std::views::split(',') | std::views::transform([](auto &&rng) {
-        auto data = rng | std::views::split('-') |
-                    std::views::transform(as_string_view) |
-                    std::views::transform(to_int);
-        return data;
-      });
+  auto data
+      = input | std::views::split(',') | std::views::transform([](auto &&rng) {
+          auto data = rng
+                      | std::views::split('-')
+                      | std::views::transform(as_string_view)
+                      | std::views::transform(to_int);
+          return data;
+        });
 
-  auto new_rng = data | std::views::transform([](auto &&rng) {
-                   auto begin_it = std::ranges::begin(rng);
-                   auto begin = *begin_it;
-                   auto end = *std::ranges::next(begin_it);
-                   return std::views::iota(begin, end + 1) |
-                          std::views::filter([](const auto &num) {
-                            auto str = to_string(num);
-                            return is_invalid_id(str);
-                          });
-                 }) |
-                 std::views::join;
+  auto new_rng = data
+                 | std::views::transform([](auto &&rng) {
+                     auto begin_it = std::ranges::begin(rng);
+                     auto begin = *begin_it;
+                     auto end = *std::ranges::next(begin_it);
+                     return std::views::iota(begin, end + 1)
+                            | std::views::filter([](const auto &num) {
+                                auto str = to_string(num);
+                                return is_invalid_id(str);
+                              });
+                   })
+                 | std::views::join;
   return std::ranges::fold_left(new_rng, 0, std::plus{});
 }
 }; // namespace aoc2025::day02

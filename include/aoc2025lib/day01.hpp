@@ -27,8 +27,8 @@ constexpr auto parse(char c) -> Rotation::Direction {
 constexpr auto parse(auto str) -> Rotation {
   const auto dir = parse(str[0]);
   int result{};
-  const auto [ptr, ec] =
-      std::from_chars(str.data() + 1, str.data() + str.size(), result);
+  const auto [ptr, ec]
+      = std::from_chars(str.data() + 1, str.data() + str.size(), result);
 
   if (ec != std::errc{})
     throw std::runtime_error("invalid int from rotation");
@@ -75,12 +75,13 @@ constexpr auto part01(std::string_view input) -> std::size_t {
   };
 
   return std::ranges::count(
-      input | std::ranges::views::split("\n"sv) |
-          std::views::filter([](auto rng) { return not rng.empty(); }) |
-          std::views::transform([](auto rng) {
-            return parse(std::string_view{rng.data(), rng.size()});
-          }) |
-          dial_transform(compute),
+      input
+          | std::ranges::views::split("\n"sv)
+          | std::views::filter([](auto rng) { return not rng.empty(); })
+          | std::views::transform([](auto rng) {
+              return parse(std::string_view{rng.data(), rng.size()});
+            })
+          | dial_transform(compute),
       0);
 }
 constexpr auto part02(std::string_view input) -> std::size_t {
@@ -94,11 +95,12 @@ constexpr auto part02(std::string_view input) -> std::size_t {
     });
   };
 
-  auto rotations = input | std::ranges::views::split("\n"sv) |
-                   std::views::filter([](auto rng) { return !rng.empty(); }) |
-                   std::views::transform([](auto rng) {
-                     return parse(std::string_view{rng.data(), rng.size()});
-                   });
+  auto rotations = input
+                   | std::ranges::views::split("\n"sv)
+                   | std::views::filter([](auto rng) { return !rng.empty(); })
+                   | std::views::transform([](auto rng) {
+                       return parse(std::string_view{rng.data(), rng.size()});
+                     });
 
   // Example: count zeros
   return std::ranges::fold_left(

@@ -3,3 +3,5 @@ BinPackArguments: false
 BinPackParameters: false
 UseTab: Never
 TabWidth: 2
+BreakBinaryOperations: OnePerLine
+BreakBeforeBinaryOperators: true

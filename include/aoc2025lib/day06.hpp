@@ -53,31 +53,42 @@ constexpr auto compute(const Operator &op, const auto lhs, const auto rhs) {
 
 constexpr auto parse_number_line(std::string_view line) {
   using namespace std::literals;
-  return line | std::views::split(" "sv) |
-         std::views::transform(as_string_view) |
-         std::views::filter(empty_string) | std::views::transform(to_int) |
-         std::ranges::to<std::vector>();
+  return line
+         | std::views::split(" "sv)
+         | std::views::transform(as_string_view)
+         | std::views::filter(empty_string)
+         | std::views::transform(to_int)
+         | std::ranges::to<std::vector>();
 }
 constexpr auto parse_operator_line(std::string_view line) {
   using namespace std::literals;
-  return line | std::views::split(" "sv) |
-         std::views::transform(as_string_view) |
-         std::views::filter(empty_string) | std::views::transform(to_operator) |
-         std::ranges::to<std::vector>();
+  return line
+         | std::views::split(" "sv)
+         | std::views::transform(as_string_view)
+         | std::views::filter(empty_string)
+         | std::views::transform(to_operator)
+         | std::ranges::to<std::vector>();
 }
 
 constexpr auto part01(std::string_view input) -> std::size_t {
   using namespace std::literals;
-  auto lines =
-      input | std::views::split('\n') | std::views::transform(as_string_view) |
-      std::views::filter(empty_string) | std::ranges::to<std::vector>();
-  auto numbers_list = lines | std::views::reverse | std::views::drop(1) |
-                      std::views::transform(parse_number_line);
-  auto operators = lines | std::views::reverse | std::views::take(1) |
-                   std::views::transform([](std::string_view line) {
-                     return parse_operator_line(line);
-                   }) |
-                   std::views::join | std::ranges::to<std::vector>();
+  auto lines = input
+               | std::views::split('\n')
+               | std::views::transform(as_string_view)
+               | std::views::filter(empty_string)
+               | std::ranges::to<std::vector>();
+  auto numbers_list = lines
+                      | std::views::reverse
+                      | std::views::drop(1)
+                      | std::views::transform(parse_number_line);
+  auto operators = lines
+                   | std::views::reverse
+                   | std::views::take(1)
+                   | std::views::transform([](std::string_view line) {
+                       return parse_operator_line(line);
+                     })
+                   | std::views::join
+                   | std::ranges::to<std::vector>();
   ;
   std::size_t accum = 0;
   for (int y = 0; y < std::ranges::distance(numbers_list[0]); y++) {

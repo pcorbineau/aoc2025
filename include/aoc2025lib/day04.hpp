@@ -23,9 +23,9 @@ constexpr auto neighbours(
   std::size_t counter = 0;
   for (int i = x - 1; i <= x + 1; i++) {
     for (int j = y - 1; j <= y + 1; j++) {
-      if (in_bounds(static_cast<int>(width), static_cast<int>(height), i, j) and
-          not himself(x, y, i, j) and
-          is_roll_of_paper(input[index(width, i, j)]))
+      if (in_bounds(static_cast<int>(width), static_cast<int>(height), i, j)
+          and not himself(x, y, i, j)
+          and is_roll_of_paper(input[index(width, i, j)]))
         counter++;
     }
   }
@@ -39,8 +39,8 @@ struct ParseResult {
 
 constexpr auto parse_once(std::string_view input) {
   auto output = std::string(input);
-  const std::size_t width =
-      std::ranges::distance(input.begin(), std::ranges::find(input, '\n'));
+  const std::size_t width
+      = std::ranges::distance(input.begin(), std::ranges::find(input, '\n'));
   const std::size_t height = input.size() / (width + 1);
 
   std::size_t counter = 0;
