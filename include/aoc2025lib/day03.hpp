@@ -24,11 +24,11 @@ struct lines_t : std::ranges::range_adaptor_closure<lines_t> {
 inline constexpr lines_t lines{};
 
 constexpr auto largest_joltage(const std::size_t window, std::string_view input)
-    -> long {
-  long max = 0;
+    -> std::size_t {
+  std::size_t max = 0;
   std::size_t start = 0;
   for (std::size_t i = 0; i < window; i++) {
-    long value = -1;
+    std::size_t value = 0;
     const auto end = input.size() - window + 1 + i;
     for (std::size_t j = start; j < end; j++) {
       const auto c = as_num(input[j]);
@@ -43,7 +43,7 @@ constexpr auto largest_joltage(const std::size_t window, std::string_view input)
 }
 constexpr auto empty_line = [](auto &&rng) { return rng.size() != 0; };
 
-constexpr auto part01(std::string_view input) -> long {
+constexpr auto part01(std::string_view input) -> std::size_t {
   return std::ranges::fold_left(
       input | lines | std::views::filter(empty_line) |
           std::views::transform(
@@ -52,7 +52,7 @@ constexpr auto part01(std::string_view input) -> long {
       std::plus{});
 }
 
-constexpr auto part02(std::string_view input) -> long {
+constexpr auto part02(std::string_view input) -> std::size_t {
   return std::ranges::fold_left(
       input | lines | std::views::filter(empty_line) |
           std::views::transform(

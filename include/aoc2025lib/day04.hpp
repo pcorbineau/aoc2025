@@ -38,9 +38,9 @@ struct ParseResult {
 
 constexpr auto parse_once(std::string_view input) {
   auto output = std::string(input);
-  const auto width =
+  const std::size_t width =
       std::ranges::distance(input.begin(), std::ranges::find(input, '\n'));
-  const auto height = input.size() / (width + 1);
+  const std::size_t height = input.size() / (width + 1);
 
   std::size_t counter = 0;
   for (std::size_t i = 0; i < width; i++) {
@@ -59,11 +59,11 @@ constexpr auto parse_once(std::string_view input) {
   return ParseResult{output, counter};
 }
 
-constexpr auto part01(std::string_view input) -> long {
+constexpr auto part01(std::string_view input) -> std::size_t {
   return parse_once(input).counter;
 }
 
-constexpr auto part02(std::string_view input) -> long {
+constexpr auto part02(std::string_view input) -> std::size_t {
   std::size_t counter = 0;
   auto result = parse_once(input);
   while (result.counter > 0) {

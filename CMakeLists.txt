@@ -16,9 +16,9 @@ file(
 Include(FetchContent)
 
 FetchContent_Declare(
-  Catch2
-  GIT_REPOSITORY https://github.com/catchorg/Catch2.git
-  GIT_TAG        v3.8.1 # or a later release
+		Catch2
+		GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+		GIT_TAG        v3.8.1 # or a later release
 )
 
 FetchContent_MakeAvailable(Catch2)
@@ -41,6 +41,18 @@ target_include_directories(
 	${CMAKE_SOURCE_DIR}/include
 )
 target_compile_features(aoc2025lib INTERFACE cxx_std_23)
+target_compile_options(
+	aoc2025lib
+	INTERFACE
+				# GCC/Clang flags
+		$<IF:$<CXX_COMPILER_ID:GNU>,
+				-Wall -Wextra -Wpedantic -Werror,
+				>
+			# MSVC flags
+		$<IF:$<CXX_COMPILER_ID:MSVC>,
+				/W4 /WX,  # /W4, warnings as errors, disable C4100
+				>
+)
 # -----------------------------------------------------------------------------
 # aoc2025 executable
 

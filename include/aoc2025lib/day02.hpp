@@ -7,16 +7,16 @@
 
 namespace aoc2025::day02 {
 
-constexpr long to_int(std::string_view sv) {
-  long value{};
+constexpr std::size_t to_int(std::string_view sv) {
+  std::size_t value{};
   auto [ptr, ec] = std::from_chars(sv.data(), sv.data() + sv.size(), value);
   if (ec != std::errc{})
     throw "bad integer";
   return value;
 }
 
-constexpr std::string to_string(long num) {
-  const size_t buf_size = 10;
+constexpr std::string to_string(std::size_t num) {
+  const size_t buf_size = 20;
   char buf[buf_size]{};
   auto [ptr, ec] = std::to_chars(buf, buf + buf_size, num);
   if (ec != std::errc{})
@@ -57,7 +57,7 @@ constexpr auto is_invalid_id(std::string_view id) {
   return false;
 }
 
-constexpr auto part01(std::string_view input) -> long {
+constexpr auto part01(std::string_view input) -> std::size_t {
   auto data =
       input | std::views::split(',') | std::views::transform([](auto &&rng) {
         auto data = rng | std::views::split('-') |
@@ -79,7 +79,7 @@ constexpr auto part01(std::string_view input) -> long {
                  std::views::join;
   return std::ranges::fold_left(new_rng, 0, std::plus{});
 }
-constexpr auto part02(std::string_view input) -> long {
+constexpr auto part02(std::string_view input) -> std::size_t {
   auto data =
       input | std::views::split(',') | std::views::transform([](auto &&rng) {
         auto data = rng | std::views::split('-') |

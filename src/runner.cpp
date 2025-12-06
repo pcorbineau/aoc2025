@@ -1,6 +1,7 @@
 #include <aoc2025lib/days.hpp>
 #include <filesystem>
 #include <fstream>
+#include <print>
 #include <string>
 
 std::string read_file(const std::filesystem::path &filename) {
@@ -33,6 +34,10 @@ void print_result(const int day_number, std::string_view input) {
 }
 
 int main(int argc, const char *argv[]) {
+  if (argc != 3) {
+    std::println("usage : {} <day_number> <input_file_path>", argv[0]);
+    return 1;
+  }
   const auto day_number = argv[1];
   const auto input_file = argv[2];
   const auto file_content = read_file(input_file);

@@ -31,8 +31,6 @@ struct std::formatter<aoc2025::day05::Range> : std::formatter<std::string> {
 
 namespace aoc2025::day05 {
 
-constexpr auto is_fresh(const Range &range, std::size_t val) {}
-
 template <typename T> constexpr auto as_num(std::string_view input) {
   if (input.empty())
     throw std::runtime_error("empty input");
@@ -66,7 +64,7 @@ constexpr auto to_string_view = [](auto &&rng) {
   return std::string_view(std::ranges::data(rng), std::ranges::size(rng));
 };
 
-constexpr auto part01(std::string_view input) -> long {
+constexpr auto part01(std::string_view input) -> std::size_t {
   using namespace std::literals;
   auto view = input | std::views::split("\n\n"sv);
   auto ranges_it = std::ranges::begin(view);
@@ -89,7 +87,7 @@ constexpr auto part01(std::string_view input) -> long {
       }));
 }
 
-constexpr auto part02(std::string_view input) -> long {
+constexpr auto part02(std::string_view input) -> std::size_t {
   using namespace std::literals;
   auto view = input | std::views::split("\n\n"sv);
   auto ranges_it = std::ranges::begin(view);
