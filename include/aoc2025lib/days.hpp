@@ -6,3 +6,4 @@
 #include "aoc2025lib/day04.hpp"
 #include "aoc2025lib/day05.hpp"
 #include "aoc2025lib/day06.hpp"
+#include "aoc2025lib/day07.hpp"
