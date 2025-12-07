@@ -2,7 +2,7 @@
 #include <catch2/catch_test_macros.hpp>
 
 namespace input {
-static constexpr auto part01 =
+static constexpr auto test =
     R"(987654321111111
 811111111111119
 234234234234278
@@ -13,8 +13,8 @@ static constexpr auto part01 =
 using namespace aoc2025::day03;
 
 TEST_CASE("parts", "[day03]") {
-  STATIC_CHECK(part01(input::part01) == 357);
-  STATIC_CHECK(part02(input::part01) == 3121910778619);
+  STATIC_CHECK(part01(input::test) == 357);
+  STATIC_CHECK(part02(input::test) == 3121910778619);
 }
 TEST_CASE("largest_joltage_p01", "[day03]") {
   STATIC_CHECK(largest_joltage(2, "987654321111111") == 98);

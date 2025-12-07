@@ -2,7 +2,7 @@
 #include <catch2/catch_test_macros.hpp>
 
 namespace input {
-static constexpr auto part01 =
+static constexpr auto test =
     R"(123 328  51 64 
  45 64  387 23 
   6 98  215 314
@@ -13,8 +13,8 @@ static constexpr auto part01 =
 using namespace aoc2025::day06;
 
 TEST_CASE("parts", "[day06]") {
-  STATIC_CHECK(part01(input::part01) == 4277556);
-  STATIC_CHECK(part02(input::part01) == 3263827);
+  STATIC_CHECK(part01(input::test) == 4277556);
+  STATIC_CHECK(part02(input::test) == 3263827);
 }
 
 TEST_CASE("parse_number_line", "[day06]") {

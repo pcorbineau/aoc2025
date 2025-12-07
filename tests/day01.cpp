@@ -3,7 +3,7 @@
 #include <format>
 
 namespace input {
-static constexpr auto part01 = R"(L68
+static constexpr auto test = R"(L68
 L30
 R48
 L5
@@ -26,8 +26,8 @@ template <> struct StringMaker<ComputeResult> {
 } // namespace Catch
 
 TEST_CASE("parts", "[day01]") {
-  STATIC_CHECK(part01(input::part01) == 3);
-  STATIC_CHECK(part02(input::part01) == 6);
+  STATIC_CHECK(part01(input::test) == 3);
+  STATIC_CHECK(part02(input::test) == 6);
 }
 
 TEST_CASE("rotate", "[day01]") {

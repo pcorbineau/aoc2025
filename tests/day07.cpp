@@ -2,7 +2,7 @@
 #include <catch2/catch_test_macros.hpp>
 
 namespace input {
-static constexpr auto part01 =
+static constexpr auto test =
     R"(.......S.......
 ...............
 .......^.......
@@ -25,10 +25,10 @@ static constexpr auto part01 =
 using namespace aoc2025::day07;
 
 TEST_CASE("parts", "[day07]") {
-  STATIC_CHECK(part01(input::part01) == 21);
-  STATIC_CHECK(part02(input::part01) == 40);
+  STATIC_CHECK(part01(input::test) == 21);
+  STATIC_CHECK(part02(input::test) == 40);
 }
 TEST_CASE("dims", "[day07]") {
-  STATIC_CHECK(width(input::part01) == 15);
-  STATIC_CHECK(height(input::part01) == 16);
+  STATIC_CHECK(width(input::test) == 15);
+  STATIC_CHECK(height(input::test) == 16);
 }

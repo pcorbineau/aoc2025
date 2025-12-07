@@ -2,7 +2,7 @@
 #include <catch2/catch_test_macros.hpp>
 
 namespace input {
-static constexpr auto part01 =
+static constexpr auto test =
     R"(3-5
 10-14
 16-20
@@ -21,8 +21,8 @@ static constexpr auto part01 =
 using namespace aoc2025::day05;
 
 TEST_CASE("parts", "[day05]") {
-  STATIC_CHECK(part01(input::part01) == 3);
-  STATIC_CHECK(part02(input::part01) == 16);
+  STATIC_CHECK(part01(input::test) == 3);
+  STATIC_CHECK(part02(input::test) == 16);
 }
 TEST_CASE("parse_range", "[day05]") {
   STATIC_CHECK(parse_range("1-2") == Range{1, 2});
