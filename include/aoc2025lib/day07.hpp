@@ -13,11 +13,11 @@ constexpr std::size_t index(const auto width, const auto x, const auto y) {
   return ((width + 1) * y) + x;
 }
 constexpr int width(std::string_view input) {
-  return std::ranges::distance(std::ranges::begin(input),
-                               std::ranges::find(input, '\n'));
+  return static_cast<int>(std::ranges::distance(
+      std::ranges::begin(input), std::ranges::find(input, '\n')));
 }
 constexpr int height(std::string_view input) {
-  return input.size() / (width(input) + 1);
+  return static_cast<int>(input.size() / (width(input) + 1));
 }
 
 constexpr auto in_bounds(const auto input, const auto x, const auto y) {
