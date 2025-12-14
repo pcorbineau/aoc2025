@@ -26,8 +26,7 @@ FetchContent_MakeAvailable(Catch2)
 # aoc2025 library
 add_library(aoc2025lib INTERFACE)
 target_sources(
-	aoc2025lib
-	INTERFACE
+	aoc2025lib	INTERFACE
 	${CMAKE_SOURCE_DIR}/include/aoc2025lib/days.hpp
 	${CMAKE_SOURCE_DIR}/include/aoc2025lib/day01.hpp
 	${CMAKE_SOURCE_DIR}/include/aoc2025lib/day02.hpp
@@ -36,6 +35,10 @@ target_sources(
 	${CMAKE_SOURCE_DIR}/include/aoc2025lib/day05.hpp
 	${CMAKE_SOURCE_DIR}/include/aoc2025lib/day06.hpp
 	${CMAKE_SOURCE_DIR}/include/aoc2025lib/day07.hpp
+	${CMAKE_SOURCE_DIR}/include/aoc2025lib/day08.hpp
+	${CMAKE_SOURCE_DIR}/include/aoc2025lib/day09.hpp
+	${CMAKE_SOURCE_DIR}/include/aoc2025lib/day10.hpp
+	${CMAKE_SOURCE_DIR}/include/aoc2025lib/day11.hpp
 )
 target_include_directories(
 	aoc2025lib
@@ -74,6 +77,10 @@ add_executable(
 	tests/day05.cpp
 	tests/day06.cpp
 	tests/day07.cpp
+	tests/day08.cpp
+	tests/day09.cpp
+	tests/day10.cpp
+	tests/day11.cpp
 )
 target_compile_definitions(aoc2025test PRIVATE CATCH_CONFIG_RUNTIME_STATIC_REQUIRE)
 target_link_libraries(aoc2025test PRIVATE aoc2025lib Catch2::Catch2WithMain)
